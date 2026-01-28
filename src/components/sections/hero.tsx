@@ -6,7 +6,7 @@ import { personalDetails } from '@/lib/data';
 import { Download, Github, Linkedin, Twitter } from 'lucide-react';
 import { AnimatedSection } from '../animated-section';
 
-const roles = ['Project Lead', 'Software Developer', 'GenAI Enthusiast'];
+const roles = ['GenAI Engineer', 'Software Developer', 'GenAI Enthusiast'];
 
 export function HeroSection() {
   const [typedRole, setTypedRole] = useState('');
