@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "certificate-badge",
+      "description": "A placeholder badge for a certificate.",
+      "imageUrl": "https://images.unsplash.com/photo-1609771377023-7a7480af949a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2VydGlmaWNhdGUlMjBiYWRnZXxlbnwwfHx8fDE3Njk1OTUxMzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "certificate badge"
+    },
+    {
+      "id": "hr-copilot",
+      "description": "HR Co-Pilot Project Image",
+      "imageUrl": "https://images.unsplash.com/photo-1763718432504-7716caff6e99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBSSUyMGRhc2hib2FyZHxlbnwwfHx8fDE3Njk1OTAyNjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI dashboard"
+    },
+    {
+      "id": "hospital-management",
+      "description": "Hospital Management System Project Image",
+      "imageUrl": "https://images.unsplash.com/photo-1616866179473-32cc45153877?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZWRpY2FsJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2OTUwOTM4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical dashboard"
+    },
+    {
+      "id": "grievance-system",
+      "description": "Grievance Management System Project Image",
+      "imageUrl": "https://images.unsplash.com/photo-1621541366821-39b73cf6d686?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxnb3Zlcm5tZW50JTIwc3lzdGVtfGVufDB8fHx8MTc2OTU5NTEzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "government system"
+    },
+    {
+      "id": "logistics-platform",
+      "description": "Logistics and EV Platform Project Image",
+      "imageUrl": "https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0cnVjayUyMG1hcHxlbnwwfHx8fDE3Njk1OTUxMzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck map"
+    },
+    {
+      "id": "nanoseal-crm",
+      "description": "NanoSeal CRM Project Image",
+      "imageUrl": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWxlcyUyMGRhc2hib2FyZHxlbnwwfHx8fDE3Njk1OTUxMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sales dashboard"
+    }
+  ]
 }
