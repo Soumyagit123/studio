@@ -16,7 +16,7 @@ import {
 
 export const personalDetails = {
   name: 'Soumyaranjan Dash',
-  role: 'GenAI Engineer / Software Developer',
+  role: 'GenAI Engineer',
   experience: '5+ Years',
   location: 'Bhubaneswar, Odisha, India',
   email: 'soumyaranjan.dash4@gmail.com',
@@ -29,7 +29,7 @@ export const personalDetails = {
 };
 
 export const professionalSummary =
-  'A GenAI Engineer and Software Developer with 5+ years of experience in building scalable web applications using Angular, Vue.js, Node.js, and modern backend technologies. Currently leading projects that integrate Generative AI, RAG systems, and Agentic AI frameworks to automate enterprise workflows and deliver intelligent, data-driven solutions. Strong experience in mentoring teams, client interaction, and end-to-end product delivery.';
+  'A GenAI Engineer and Software Developer with 5+ years of experience in building scalable web applications using Angular, Vue.js, Node.js, and modern backend technologies. Currently focused on integrating Generative AI, RAG systems, and Agentic AI frameworks to automate enterprise workflows and deliver intelligent, data-driven solutions.';
 
 export const skills = [
   {
@@ -61,13 +61,12 @@ export const skills = [
 
 export const workExperience = [
   {
-    role: 'Tech Lead / GenAI Engineer',
+    role: 'Software Engineer',
     company: 'Gemini Consulting & Services',
     location: 'Bhubaneswar',
     period: 'May 2024 – Present',
     description: [
-      'Leading frontend and AI-driven application development.',
-      'Mentoring junior developers and conducting code reviews.',
+      'Developing frontend and AI-driven applications.',
       'Integrating Generative AI, RAG, and agentic workflows into enterprise systems.',
       'Tech stack: Vue.js, Node.js, TypeScript, LangChain, LangGraph, PostgreSQL, Vector DBs.',
     ],
@@ -103,7 +102,7 @@ export const projectsData = [
     year: '2024 – Present',
     description:
       'A fully automated HR assistance system using Agentic AI to handle employee queries, manage leave requests, and streamline onboarding processes. The system leverages RAG for contextual understanding and provides intelligent, human-like responses.',
-    role: 'Lead Developer',
+    role: 'GenAI Engineer',
     techStack: 'LangChain, LangGraph, Pinecone, Vue.js, Node.js',
     
   },
@@ -113,7 +112,7 @@ export const projectsData = [
     year: '2023',
     description:
       'An enterprise-level hospital management system designed to manage patient records, appointments, billing, and inventory. The application provides a seamless experience for hospital staff and improves operational efficiency.',
-    role: 'Lead Frontend Developer',
+    role: 'Frontend Developer',
     techStack: 'Angular 17, Spring Boot, PostgreSQL, Angular Material',
     
   },

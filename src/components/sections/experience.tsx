@@ -12,12 +12,12 @@ export function ExperienceSection() {
         <div className="relative mt-12">
           <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-border"></div>
           {workExperience.map((job, index) => (
-            <div key={index} className="relative mb-12 flex w-full items-center justify-between">
-              <div className={`order-1 w-5/12 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}></div>
+            <div key={index} className="relative mb-12 flex w-full items-center justify-between odd:flex-row-reverse">
+              <div className="w-5/12"></div>
               <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
                 <Briefcase className="h-5 w-5" />
               </div>
-              <div className={`order-1 w-5/12 rounded-lg border bg-card p-6 text-card-foreground shadow-sm ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+              <div className="w-5/12 rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
                 <p className="mb-1 text-sm font-semibold text-primary">{job.period}</p>
                 <h3 className="mb-2 text-xl font-bold">{job.role}</h3>
                 <p className="mb-3 text-base font-normal text-muted-foreground">
