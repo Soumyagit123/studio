@@ -41,7 +41,7 @@ export function HeroSection() {
     <AnimatedSection as="div" className="relative flex min-h-[calc(100vh-5rem)] items-center">
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(40%_50%_at_50%_30%,hsl(var(--primary)/0.1),transparent)]"
+        className="absolute inset-0 -z-10"
       ></div>
       <div className="container">
         <div className="flex flex-col items-center text-center">

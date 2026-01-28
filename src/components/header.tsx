@@ -51,7 +51,7 @@ export function Header() {
       )}
     >
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="text-2xl font-bold tracking-tight text-primary">
+        <Link href="/" className="text-2xl font-semibold tracking-tight text-primary">
           Dashfolio
         </Link>
 
