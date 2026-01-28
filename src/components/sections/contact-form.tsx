@@ -1,8 +1,8 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
 import { submitContactForm } from "@/app/actions";
-import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ function SubmitButton() {
 }
 
 export function ContactForm() {
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function ContactForm() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" placeholder="Your message..." required minLength={10} />
+        <Textarea id="message" name="message" placeholder="Your message..." required required minLength={10} />
         {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
       </div>
       <SubmitButton />
