@@ -55,18 +55,18 @@ export function HeroSection() {
           data-ai-hint={heroBgImage.imageHint}
         />
       )}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/70 dark:bg-background/80" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/80 dark:bg-background/90" />
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+          <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl">
               {personalDetails.name}
             </h1>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
-              <span className="inline-block min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-primary sm:text-3xl xl:text-4xl">
+              <span className="inline-block min-h-[40px] md:min-h-[48px]">{typedRole}</span>
               <span className="animate-ping">|</span>
             </h2>
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               A {personalDetails.role} with {personalDetails.experience} of experience in building scalable web applications and AI-driven solutions.
             </p>
             <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
@@ -81,14 +81,14 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="relative flex justify-center order-first md:order-last">
+          <div className="relative md:col-span-2 flex justify-center order-first md:order-last">
              {profilePhoto && (
                 <div className="relative">
                   <Image
                     src={profilePhoto.imageUrl}
                     alt="Soumyaranjan Dash"
-                    width={320}
-                    height={320}
+                    width={280}
+                    height={280}
                     className="rounded-full border-4 border-primary/50 object-cover shadow-2xl"
                     priority
                     data-ai-hint={profilePhoto.imageHint}
