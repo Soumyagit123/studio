@@ -25,6 +25,7 @@ export const personalDetails = {
     linkedin: 'https://www.linkedin.com/in/soumyaranjan-dash-968357221/',
     github: 'https://github.com/soumyaranjan-dash',
     twitter: 'https://twitter.com/srdash4',
+    credly: 'https://www.credly.com/users/soumyaranjan-dash.d25aea47/badges#credly',
   },
 };
 

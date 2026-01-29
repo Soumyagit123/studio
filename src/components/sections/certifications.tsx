@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { certifications } from '@/lib/data';
+import { certifications, personalDetails } from '@/lib/data';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AnimatedSection } from '../animated-section';
@@ -12,11 +13,11 @@ export function CertificationsSection() {
   return (
     <AnimatedSection id="certifications">
       <div className="container">
-        <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl">Certifications</h2>
+        <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl">Certifications & Badges</h2>
         <p className="mt-4 text-center text-muted-foreground md:text-xl/relaxed">
           Validation of my skills and expertise.
         </p>
-        <div className="mt-12 max-w-2xl mx-auto">
+        <div className="mt-12 max-w-2xl mx-auto space-y-8">
           {certifications.map((cert) => (
             <a
               key={cert.title}
@@ -51,6 +52,15 @@ export function CertificationsSection() {
               </Card>
             </a>
           ))}
+          {personalDetails.social.credly && (
+            <div className="text-center">
+              <Button asChild size="lg">
+                <a href={personalDetails.social.credly} target="_blank" rel="noopener noreferrer">
+                  View All Badges on Credly
+                </a>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </AnimatedSection>
