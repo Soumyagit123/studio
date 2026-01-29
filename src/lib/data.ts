@@ -30,33 +30,33 @@ export const personalDetails = {
 };
 
 export const professionalSummary =
-  'A GenAI Engineer and Software Developer with 5+ years of experience in building scalable web applications using Angular, Vue.js, Node.js, and modern backend technologies. Currently focused on integrating Generative AI, RAG systems, and Agentic AI frameworks to automate enterprise workflows and deliver intelligent, data-driven solutions.';
+  "A full-stack developer with 5+ years of experience, now specializing in Generative AI. I build intelligent, agentic AI applications using frameworks like Langchain and LangGraph, integrated with full-stack systems. My focus on Context Engineering allows me to create robust, self-correcting AI agents. I am proficient in Angular, Vue.js, Node.js, and various databases, always exploring the intersection of AI and full-stack engineering to build impactful solutions.";
 
 export const skills = [
   {
     category: 'Frontend',
     icon: Codepen,
-    technologies: ['Angular (9–17+)', 'Vue.js', 'Ionic', 'HTML5, CSS3, JavaScript', 'Bootstrap', 'Angular Material'],
+    technologies: ['Angular', 'Vue.js', 'Tailwind CSS', 'HTML5, CSS3, JavaScript', 'Bootstrap'],
   },
   {
     category: 'Backend',
     icon: Server,
-    technologies: ['Node.js', 'ASP.NET Web API', 'Spring Boot', 'REST APIs'],
+    technologies: ['Node.js', 'Express.js', 'REST APIs'],
   },
   {
     category: 'Databases',
     icon: Database,
-    technologies: ['SQL Server', 'MySQL', 'PostgreSQL', 'MongoDB', 'Vector Databases (Pinecone, pgvector)'],
+    technologies: ['Supabase', 'PostgreSQL', 'MongoDB', 'Vector DBs (Pinecone, ChromaDB, pgvector)'],
   },
   {
-    category: 'AI / GenAI',
+    category: 'Generative AI',
     icon: Sparkles,
-    technologies: ['Generative AI', 'RAG', 'LangChain', 'LangGraph', 'Multi-Agent Systems', 'Google Gemini LLM'],
+    technologies: ['LangChain', 'LangGraph', 'RAG', 'Agentic Workflows', 'Context Engineering', 'Hugging Face models'],
   },
   {
-    category: 'Tools',
+    category: 'Tools & Platforms',
     icon: GitBranch,
-    technologies: ['Git / GitHub', 'Postman', 'Docker (basic)'],
+    technologies: ['Git / GitHub', 'Postman', 'Docker', 'Windsurf', 'Claude-Code CLI', 'Google Gemini CLI'],
   },
 ];
 
