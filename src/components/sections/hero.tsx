@@ -55,10 +55,10 @@ export function HeroSection() {
           data-ai-hint={heroBgImage.imageHint}
         />
       )}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/80 dark:bg-background/90" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/50 dark:bg-background/70" />
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-          <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div className="md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl">
               {personalDetails.name}
             </h1>
@@ -81,7 +81,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="relative md:col-span-2 flex justify-center order-first md:order-last">
+          <div className="relative md:col-span-1 flex justify-center order-first md:order-last">
              {profilePhoto && (
                 <div className="relative">
                   <Image
