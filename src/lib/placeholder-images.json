@@ -7,6 +7,12 @@
       "imageHint": "professional man"
     },
     {
+      "id": "hero-background",
+      "description": "An AI-themed background image for the hero section.",
+      "imageUrl": "https://images.unsplash.com/photo-1696208262024-005b46a06684?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhaSUyMGFic3RyYWN0fGVufDB8fHx8MTcyMDA3NzU4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI abstract"
+    },
+    {
       "id": "certificate-badge",
       "description": "A placeholder badge for a certificate.",
       "imageUrl": "https://images.unsplash.com/photo-1609771377023-7a7480af949a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2VydGlmaWNhdGUlMjBiYWRnZXxlbnwwfHx8fDE3Njk1OTUxMzh8MA&ixlib=rb-4.1.0&q=80&w=1080",

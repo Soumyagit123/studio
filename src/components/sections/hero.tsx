@@ -17,6 +17,8 @@ export function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const profilePhoto = PlaceHolderImages.find(img => img.id === 'profile-photo');
+  const heroBgImage = PlaceHolderImages.find(img => img.id === 'hero-background');
+
 
   useEffect(() => {
     const handleTyping = () => {
@@ -42,21 +44,30 @@ export function HeroSection() {
   }, [charIndex, roleIndex, isDeleting]);
 
   return (
-    <AnimatedSection as="div" className="relative flex min-h-[calc(100vh-5rem)] items-center">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-grid-pattern"
-      ></div>
+    <AnimatedSection as="div" className="relative flex min-h-[calc(100vh-5rem)] items-center overflow-hidden">
+      {heroBgImage && (
+        <Image
+          src={heroBgImage.imageUrl}
+          alt="AI background"
+          fill
+          className="object-cover -z-20"
+          priority
+          data-ai-hint={heroBgImage.imageHint}
+        />
+      )}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/70 dark:bg-background/80" />
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              {personalDetails.name}
-            </h1>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
-              <span className="h-10 min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
-              <span className="animate-ping">|</span>
-            </h2>
+            <div className="flex flex-wrap items-baseline justify-center md:justify-start gap-x-3 gap-y-2">
+                <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+                  {personalDetails.name}
+                </h1>
+                <h2 className="text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
+                  <span className="h-10 min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
+                  <span className="animate-ping">|</span>
+                </h2>
+            </div>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
               A {personalDetails.role} with {personalDetails.experience} of experience in building scalable web applications and AI-driven solutions.
             </p>
