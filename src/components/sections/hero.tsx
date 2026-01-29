@@ -55,19 +55,17 @@ export function HeroSection() {
           data-ai-hint={heroBgImage.imageHint}
         />
       )}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/50 dark:bg-background/60" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/70 dark:bg-background/80" />
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-center md:justify-start gap-x-4">
-                <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl whitespace-nowrap">
-                  {personalDetails.name}
-                </h1>
-                <h2 className="text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
-                  <span className="inline-block min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
-                  <span className="animate-ping">|</span>
-                </h2>
-            </div>
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              {personalDetails.name}
+            </h1>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
+              <span className="inline-block min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
+              <span className="animate-ping">|</span>
+            </h2>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
               A {personalDetails.role} with {personalDetails.experience} of experience in building scalable web applications and AI-driven solutions.
             </p>
