@@ -165,5 +165,6 @@ export const certifications = [
     issuer: 'IBM',
     date: 'Issued: Jan 2026', // As per user request
     description: 'Expertise in RAG systems, Vector databases, Agentic AI with LangChain & LangGraph, CrewAI & AutoGen, and Multimodal AI.',
+    verificationLink: 'https://coursera.org/verify/professional-cert/9AIHPNMKNF70',
   },
 ];
