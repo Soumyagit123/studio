@@ -51,7 +51,7 @@ export const skills = [
   {
     category: 'Generative AI',
     icon: Sparkles,
-    technologies: ['LangChain', 'LangGraph', 'RAG', 'Agentic Workflows', 'Context Engineering', 'Hugging Face models'],
+    technologies: ['LangChain', 'LangGraph', 'RAG', 'Agentic Workflows', 'Context Engineering', 'Hugging Face models', 'OpenAI models', 'Anthropic models'],
   },
   {
     category: 'Tools & Platforms',
