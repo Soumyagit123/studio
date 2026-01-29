@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { personalDetails } from '@/lib/data';
-import { Download, Github, Linkedin, Twitter } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { AnimatedSection } from '../animated-section';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const roles = ['GenAI Engineer', 'Software Developer', 'GenAI Enthusiast'];
 
@@ -13,6 +15,8 @@ export function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const profilePhoto = PlaceHolderImages.find(img => img.id === 'profile-photo');
 
   useEffect(() => {
     const handleTyping = () => {
@@ -41,30 +45,48 @@ export function HeroSection() {
     <AnimatedSection as="div" className="relative flex min-h-[calc(100vh-5rem)] items-center">
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-10 bg-grid-pattern"
       ></div>
       <div className="container">
-        <div className="flex flex-col items-center text-center">
-          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            {personalDetails.name}
-          </h1>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
-            <span className="h-10 min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
-            <span className="animate-ping">|</span>
-          </h2>
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            A {personalDetails.role} with {personalDetails.experience} of experience in building scalable web applications and AI-driven solutions.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button size="lg" asChild>
-              <a href="#contact">Get in Touch</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="/resume.pdf" download="Soumyaranjan-Dash-Resume.pdf">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              {personalDetails.name}
+            </h1>
+            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-primary sm:text-3xl md:text-4xl">
+              <span className="h-10 min-h-[40px] md:min-h-[48px] lg:min-h-[56px]">{typedRole}</span>
+              <span className="animate-ping">|</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              A {personalDetails.role} with {personalDetails.experience} of experience in building scalable web applications and AI-driven solutions.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+              <Button size="lg" asChild>
+                <a href="#contact">Get in Touch</a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="/resume.pdf" download="Soumyaranjan-Dash-Resume.pdf">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
+          </div>
+          <div className="relative flex justify-center order-first md:order-last">
+             {profilePhoto && (
+                <div className="relative">
+                  <Image
+                    src={profilePhoto.imageUrl}
+                    alt="Soumyaranjan Dash"
+                    width={320}
+                    height={320}
+                    className="rounded-full border-4 border-primary/50 object-cover shadow-2xl"
+                    priority
+                    data-ai-hint={profilePhoto.imageHint}
+                  />
+                   <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse"></div>
+                </div>
+            )}
           </div>
         </div>
       </div>
