@@ -1,67 +1,136 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
-import { useActionState, useEffect } from "react";
-import { submitContactForm } from "@/app/actions";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  useFirebase,
+  initiateAnonymousSignIn,
+  errorEmitter,
+  FirestorePermissionError,
+} from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-const initialState = {
-  message: "",
-  errors: undefined,
-  success: false,
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full">
-      {pending ? "Sending..." : "Send Message"}
-    </Button>
-  );
-}
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Invalid email address."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
+});
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
-  const [state, formAction] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
+  const { auth, firestore, user, isUserLoading } = useFirebase();
 
-  useEffect(() => {
-    if (state.success) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const [dataToSubmit, setDataToSubmit] = useState<ContactFormData | null>(null);
+
+  const onSubmit: SubmitHandler<ContactFormData> = (data) => {
+    if (!auth) {
       toast({
-        title: "Message Sent!",
-        description: state.message,
-      });
-    } else if (state.message && state.errors) {
-       toast({
         title: "Error",
-        description: state.message,
+        description: "Authentication service not available.",
         variant: "destructive",
       });
+      return;
     }
-  }, [state, toast]);
+    setDataToSubmit(data);
+    if (!user) {
+      initiateAnonymousSignIn(auth);
+    }
+  };
+
+  useEffect(() => {
+    if (user && dataToSubmit && firestore) {
+      const colRef = collection(firestore, "contactMessages");
+      addDoc(colRef, {
+        ...dataToSubmit,
+        sentAt: serverTimestamp(),
+      })
+        .then(() => {
+          toast({
+            title: "Message Sent!",
+            description: "Thank you! Your message has been sent successfully.",
+          });
+          reset();
+        })
+        .catch((e) => {
+          const permissionError = new FirestorePermissionError({
+            path: colRef.path,
+            operation: "create",
+            requestResourceData: dataToSubmit,
+          });
+          errorEmitter.emit("permission-error", permissionError);
+          toast({
+            title: "Error",
+            description: "Could not send message. Please try again.",
+            variant: "destructive",
+          });
+        })
+        .finally(() => {
+          setDataToSubmit(null);
+        });
+    }
+  }, [user, dataToSubmit, firestore, reset, toast]);
+
+  const isProcessing = isSubmitting || (isUserLoading && !!dataToSubmit);
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" name="name" placeholder="Your Name" required />
-        {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+        <Input
+          id="name"
+          placeholder="Your Name"
+          {...register("name")}
+          disabled={isProcessing}
+        />
+        {errors.name && (
+          <p className="text-sm text-destructive">{errors.name.message}</p>
+        )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" placeholder="your.email@example.com" required />
-        {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+        <Input
+          id="email"
+          type="email"
+          placeholder="your.email@example.com"
+          {...register("email")}
+          disabled={isProcessing}
+        />
+        {errors.email && (
+          <p className="text-sm text-destructive">{errors.email.message}</p>
+        )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" placeholder="Your message..." required required minLength={10} />
-        {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
+        <Textarea
+          id="message"
+          placeholder="Your message..."
+          {...register("message")}
+          disabled={isProcessing}
+        />
+        {errors.message && (
+          <p className="text-sm text-destructive">{errors.message.message}</p>
+        )}
       </div>
-      <SubmitButton />
+      <Button type="submit" disabled={isProcessing} className="w-full">
+        {isProcessing ? "Sending..." : "Send Message"}
+      </Button>
     </form>
   );
 }
