@@ -49,7 +49,7 @@ const portfolioContext = `
   `).join('')}
 `;
 
-export const PortfolioChatInputSchema = z.object({
+const PortfolioChatInputSchema = z.object({
   history: z.array(z.object({
     role: z.enum(['user', 'model']),
     content: z.string(),
