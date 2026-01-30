@@ -26,7 +26,7 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const resumeUrl = 'https://rzazqhiobwnjqxkrlwxp.supabase.co/storage/v1/object/public/Resume-pdf/Soumyaranjan-Dash-Resume.pdf';
+  const resumeUrl = '/resume.pdf';
 
   useEffect(() => {
     const handleScroll = () => {

@@ -18,7 +18,7 @@ export function HeroSection() {
 
   const profilePhoto = PlaceHolderImages.find(img => img.id === 'profile-photo');
   const heroBgImage = PlaceHolderImages.find(img => img.id === 'hero-background');
-  const resumeUrl = 'https://rzazqhiobwnjqxkrlwxp.supabase.co/storage/v1/object/public/Resume-pdf/Soumyaranjan-Dash-Resume.pdf';
+  const resumeUrl = '/resume.pdf';
 
 
   useEffect(() => {
