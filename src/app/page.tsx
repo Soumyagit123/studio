@@ -7,15 +7,8 @@ import { ProjectsSection } from '@/components/sections/projects';
 import { CertificationsSection } from '@/components/sections/certifications';
 import { ContactSection } from '@/components/sections/contact';
 import { Footer } from '@/components/footer';
-import {
-  personalDetails,
-  skills,
-  professionalSummary,
-  workExperience,
-  projectsData,
-  education,
-  certifications,
-} from '@/lib/data';
+import { ChatSection } from '@/components/chatbot';
+import { personalDetails } from '@/lib/data';
 
 export default function Home() {
   return (
@@ -28,6 +21,7 @@ export default function Home() {
         <ExperienceSection />
         <ProjectsSection />
         <CertificationsSection />
+        <ChatSection />
         <ContactSection />
       </main>
       <Footer name={personalDetails.name} />

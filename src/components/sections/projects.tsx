@@ -1,35 +1,14 @@
 import { projectsData } from '@/lib/data';
 import { AnimatedSection } from '../animated-section';
-import { generateProjectSummaries, type ProjectSummariesOutput } from '@/ai/flows/generate-project-summaries';
 import { ProjectCard } from './project-card';
 
 export async function ProjectsSection() {
-  const projectInput = {
-    projects: projectsData.map(p => ({
-      title: p.title,
-      description: p.description,
-      role: p.role,
-      techStack: p.techStack,
-    })),
-  };
-
-  let aiSummariesResult: ProjectSummariesOutput = { summaries: [] };
-
-  if (process.env.GEMINI_API_KEY) {
-    try {
-      aiSummariesResult = await generateProjectSummaries(projectInput);
-    } catch (error) {
-      console.log('Error generating project summaries with Genkit. Falling back to default summaries.', error);
-    }
-  }
-  
-  const projectsWithSummaries = projectsData.map(p => {
-    const aiSummary = aiSummariesResult.summaries.find(s => s.title === p.title);
-    return {
-      ...p,
-      aiSummary: aiSummary ? aiSummary.summary : 'A standout project showcasing modern development practices.',
-    };
-  });
+  // Using static summaries to avoid Gemini API quota issues
+  // The chatbot now uses Anthropic Claude instead
+  const projectsWithSummaries = projectsData.map(p => ({
+    ...p,
+    aiSummary: p.description.slice(0, 150) + '...',
+  }));
 
   return (
     <AnimatedSection id="projects" className="bg-secondary">

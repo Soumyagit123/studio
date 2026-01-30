@@ -43,3 +43,9 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# vector store data
+/data/vector-store/
+
+# pdf-parse test data
+/test/

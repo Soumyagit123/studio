@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { FirebaseClientProvider } from '@/firebase';
+import { ChatProvider, ChatWidget } from '@/components/chatbot';
 
 export const metadata: Metadata = {
   title: 'Dashfolio | Soumyaranjan Dash',
@@ -27,8 +28,11 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <FirebaseClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
-            <Toaster />
+            <ChatProvider>
+              {children}
+              <ChatWidget />
+              <Toaster />
+            </ChatProvider>
           </ThemeProvider>
         </FirebaseClientProvider>
       </body>

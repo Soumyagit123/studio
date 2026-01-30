@@ -16,7 +16,8 @@ export function HeroSection() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const profilePhoto = PlaceHolderImages.find(img => img.id === 'profile-photo');
+  // Use local profile image
+  const profileImageUrl = '/profile-image.jpg';
   const heroBgImage = PlaceHolderImages.find(img => img.id === 'hero-background');
   const resumeUrl = '/resume.pdf';
 
@@ -83,20 +84,17 @@ export function HeroSection() {
             </div>
           </div>
           <div className="relative md:col-span-2 flex justify-center order-first md:order-last">
-             {profilePhoto && (
-                <div className="relative">
-                  <Image
-                    src={profilePhoto.imageUrl}
-                    alt="Soumyaranjan Dash"
-                    width={240}
-                    height={240}
-                    className="rounded-full border-4 border-primary/50 object-cover shadow-2xl"
-                    priority
-                    data-ai-hint={profilePhoto.imageHint}
-                  />
-                   <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse"></div>
-                </div>
-            )}
+            <div className="relative">
+              <Image
+                src={profileImageUrl}
+                alt="Soumyaranjan Dash"
+                width={240}
+                height={240}
+                className="rounded-full border-4 border-primary/50 object-cover shadow-2xl"
+                priority
+              />
+              <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse"></div>
+            </div>
           </div>
         </div>
       </div>
