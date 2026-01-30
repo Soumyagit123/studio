@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "ContactMessage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactMessage",
+      "type": "object",
+      "description": "Represents a message sent through the contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact message."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the person sending the message."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the sender.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the sender."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message content."
+        },
+        "sentAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the message was sent.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "sentAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/contactMessages/{contactMessageId}",
+        "definition": {
+          "entityName": "ContactMessage",
+          "schema": {
+            "$ref": "#/backend/entities/ContactMessage"
+          },
+          "description": "Collection to store contact messages submitted via the contact form.",
+          "params": [
+            {
+              "name": "contactMessageId",
+              "description": "Unique identifier for each contact message."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The data structure prioritizes simplicity and security. All contact messages are stored in a single collection, `/contactMessages`. This approach is suitable given the requirements do not specify user-specific messages or different access levels.  The structure avoids hierarchical authorization dependencies by storing all contact messages in a single collection. Since the app does not define any access control requirements on this collection, no denormalization is needed. There are no `list` operation access requirements defined, but all write operations should be checked against abuse."
+  }
+}

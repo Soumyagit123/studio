@@ -1,0 +1,60 @@
+/**
+ * Core Philosophy: This ruleset enforces a "write-once, read-never" security model for a public contact form.
+ * The primary goal is to allow any visitor (including those using anonymous authentication) to submit a message,
+ * while ensuring that submitted messages are completely private and cannot be read, listed, updated, or deleted
+ * from any client-side application. This protects user privacy and data integrity.
+ *
+ * Data Structure: The data model is a single, flat collection at the root level: `/contactMessages`.
+ * Each document in this collection represents one submitted message.
+ *
+ * Key Security Decisions:
+ * - Public Create: Anyone with a valid auth token (including anonymous users) can create a document in the
+ *   `contactMessages` collection. This is essential for the contact form functionality.
+ * - Deny All Reads: All `get` and `list` operations are explicitly denied. This prevents any user from reading
+ *   messages submitted by others, or even their own message after it has been sent.
+ * - Immutable Writes: Once a message is created, it cannot be updated or deleted by any client. This ensures
+ *   the integrity of the submitted record.
+ * - No Data Validation: In line with the prototyping philosophy, these rules do not validate the shape or content
+ *   (e.g., email format, required fields) of the message being sent. Authorization is the sole focus.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper Functions
+
+    /**
+     * Checks if a user is signed in to the application.
+     * This includes users authenticated via password or anonymous sign-in.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description
+     *   Allows any signed-in user (including anonymous) to submit a contact message,
+     *   but denies all read, update, and delete operations to protect privacy.
+     * @path
+     *   /contactMessages/{contactMessageId}
+     * @allow
+     *   An anonymous user `(create)`s a new document in `/contactMessages`.
+     * @deny
+     *   Any user `(get)`s a message after it has been sent.
+     * @deny
+     *   Any user `(list)`s the collection to see all submitted messages.
+     * @principle
+     *   Enforces a 'write-once, read-never' pattern suitable for private submissions like contact forms.
+     */
+    match /contactMessages/{contactMessageId} {
+      // READ permissions
+      allow get: if false;
+      allow list: if false;
+
+      // WRITE permissions
+      allow create: if isSignedIn();
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}
