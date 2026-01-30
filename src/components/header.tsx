@@ -26,6 +26,7 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const resumeUrl = 'https://rzazqhiobwnjqxkrlwxp.supabase.co/storage/v1/object/public/Resume-pdf/Soumyaranjan-Dash-Resume.pdf';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +78,7 @@ export function Header() {
           ))}
           <ThemeToggle />
           <Button asChild>
-            <a href="/resume.pdf" download="Soumyaranjan-Dash-Resume.pdf">
+            <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 h-4 w-4" />
               Resume
             </a>
@@ -118,7 +119,7 @@ export function Header() {
                   <ThemeToggle />
                 </div>
                 <Button asChild className="w-full">
-                  <a href="/resume.pdf" download="Soumyaranjan-Dash-Resume.pdf">
+                  <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" />
                     Download Resume
                   </a>

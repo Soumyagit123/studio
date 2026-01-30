@@ -18,6 +18,7 @@ export function HeroSection() {
 
   const profilePhoto = PlaceHolderImages.find(img => img.id === 'profile-photo');
   const heroBgImage = PlaceHolderImages.find(img => img.id === 'hero-background');
+  const resumeUrl = 'https://rzazqhiobwnjqxkrlwxp.supabase.co/storage/v1/object/public/Resume-pdf/Soumyaranjan-Dash-Resume.pdf';
 
 
   useEffect(() => {
@@ -74,7 +75,7 @@ export function HeroSection() {
                 <a href="#contact">Get in Touch</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="/resume.pdf" download="Soumyaranjan-Dash-Resume.pdf">
+                <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>
