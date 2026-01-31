@@ -23,7 +23,7 @@ export const personalDetails = {
   phone: '+91 7008861660',
   social: {
     linkedin: 'https://www.linkedin.com/in/soumyaranjan-dash-968357221/',
-    github: 'https://github.com/soumyaranjan-dash',
+    github: 'https://github.com/Soumyagit123?tab=repositories',
     twitter: 'https://twitter.com/srdash4',
     credly: 'https://www.credly.com/users/soumyaranjan-dash.d25aea47/badges#credly',
   },
@@ -128,10 +128,10 @@ export const projectsData = [
   },
   {
     id: 'logistics-platform',
-    title: 'MamaStop & EV Charging System',
+    title: 'MamaStop Logistics',
     year: '2021',
     description:
-      'A dual-purpose platform combining a logistics management system with an EV charging station booking service. It helps optimize delivery routes and allows EV owners to find and book charging slots.',
+      'A comprehensive truck logistics management platform for fleet tracking, route optimization, and delivery management. The system helps logistics companies manage their truck fleets efficiently with real-time tracking and scheduling.',
     role: 'Frontend Developer',
     techStack: 'Angular, Node.js, MySQL',
   },

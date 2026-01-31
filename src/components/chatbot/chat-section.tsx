@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import {
   Card,
   CardContent,
@@ -17,6 +18,7 @@ import { MessageCircle } from 'lucide-react';
 
 export function ChatSection() {
   const { messages } = useChat();
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
 
   return (
     <AnimatedSection id="chat" className="bg-secondary">
@@ -40,7 +42,7 @@ export function ChatSection() {
             </div>
           </CardHeader>
           <CardContent className="p-0">
-            <ScrollArea className="h-[400px] px-4">
+            <ScrollArea className="h-[400px] px-4" viewportRef={scrollViewportRef}>
               {messages.length === 0 ? (
                 <div className="py-8 space-y-6">
                   <p className="text-center text-muted-foreground text-sm">
@@ -50,7 +52,7 @@ export function ChatSection() {
                   <SuggestedQuestions />
                 </div>
               ) : (
-                <ChatMessages />
+                <ChatMessages scrollContainerRef={scrollViewportRef} />
               )}
             </ScrollArea>
             <ChatInput />

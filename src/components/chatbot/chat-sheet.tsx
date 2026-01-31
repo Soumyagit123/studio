@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import {
   Sheet,
   SheetContent,
@@ -16,6 +17,7 @@ import { SuggestedQuestions } from './suggested-questions';
 
 export function ChatSheet() {
   const { isOpen, setIsOpen, messages } = useChat();
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -32,7 +34,7 @@ export function ChatSheet() {
 
         <ChatHeader />
 
-        <ScrollArea className="flex-1 px-4">
+        <ScrollArea className="flex-1 px-4" viewportRef={scrollViewportRef}>
           {messages.length === 0 ? (
             <div className="py-8 space-y-6">
               <p className="text-center text-muted-foreground text-sm">
@@ -42,7 +44,7 @@ export function ChatSheet() {
               <SuggestedQuestions />
             </div>
           ) : (
-            <ChatMessages />
+            <ChatMessages scrollContainerRef={scrollViewportRef} />
           )}
         </ScrollArea>
 

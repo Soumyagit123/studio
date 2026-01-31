@@ -5,13 +5,24 @@ import { useChat } from './chat-provider';
 import { ChatMessageBubble } from './chat-message';
 import { TypingIndicator } from './typing-indicator';
 
-export function ChatMessages() {
+interface ChatMessagesProps {
+  scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
+}
+
+export function ChatMessages({ scrollContainerRef }: ChatMessagesProps) {
   const { messages, isLoading } = useChat();
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isLoading]);
+    // Scroll within the container instead of the whole page
+    if (scrollContainerRef?.current && bottomRef.current) {
+      const container = scrollContainerRef.current;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [messages, isLoading, scrollContainerRef]);
 
   return (
     <div className="flex flex-col gap-4 py-4">
