@@ -27,7 +27,7 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const resumeUrl = '/resume.pdf';
+  const resumeUrl = '/resume.docx';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +79,7 @@ export function Header() {
           ))}
           <ThemeToggle />
           <Button asChild>
-            <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href={resumeUrl} download="Soumyaranjan-Dash-resume.docx" target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 h-4 w-4" />
               Resume
             </a>
@@ -120,7 +120,7 @@ export function Header() {
                   <ThemeToggle />
                 </div>
                 <Button asChild className="w-full">
-                  <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href={resumeUrl} download="Soumyaranjan-Dash-resume.docx" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" />
                     Download Resume
                   </a>

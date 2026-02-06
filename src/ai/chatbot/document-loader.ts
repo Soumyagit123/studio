@@ -12,7 +12,7 @@ const textSplitter = new RecursiveCharacterTextSplitter({
 
 export async function loadResumeDocuments(): Promise<Document[]> {
   try {
-    const resumePath = path.join(process.cwd(), 'public', 'resume.pdf');
+    const resumePath = path.join(process.cwd(), 'public', 'resume.docx');
     console.log(`Loading resume from: ${resumePath}`);
 
     // Use LangChain PDFLoader as per official docs

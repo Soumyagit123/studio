@@ -19,7 +19,7 @@ export function HeroSection() {
   // Use local profile image
   const profileImageUrl = '/profile-image.jpg';
   const heroBgImage = PlaceHolderImages.find(img => img.id === 'hero-background');
-  const resumeUrl = '/resume.pdf';
+  const resumeUrl = '/resume.docx';
 
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export function HeroSection() {
                 <a href="#contact">Get in Touch</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href={resumeUrl} download="Soumyaranjan-Dash-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href={resumeUrl} download="Soumyaranjan-Dash-resume.docx" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>
